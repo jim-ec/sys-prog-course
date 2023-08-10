@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+package sockets;
+
+message server_msg {
+        required int32 result = 1;
+        optional int64 total_bytes = 2;
+}

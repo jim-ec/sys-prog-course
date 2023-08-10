@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "MyConfig",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+            // "compileCommands": "/Users/jim/ux3d/gestaltor/build/compile_commands.json"
+        }
+    ],
+    "version": 4
+}

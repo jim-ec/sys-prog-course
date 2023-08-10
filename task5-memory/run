@@ -1,0 +1,33 @@
+#!/bin/sh
+
+COLORED='\033[1;33m'
+CLEAR='\033[0m'
+
+make -q
+if [ $? != 0 ]; then
+    echo "${COLORED}Building binaries ...${CLEAR}"
+    make
+    if [ $? == 0 ]; then
+        echo "${COLORED}Successfully built binaries${CLEAR}"
+    else
+        echo "${COLORED}Could not built binaries${CLEAR}"
+        exit
+    fi
+fi
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    LD_PRELOAD=./libmymalloc.so ./main
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    DYLD_FORCE_FLAT_NAMESPACE=1 DYLD_INSERT_LIBRARIES=libmymalloc.so ./main
+fi
+
+ret=$?
+if [  ${ret} == 1 ]; then
+    echo "${COLORED}Allocation failure${CLEAR}"
+elif [  ${ret} == 2 ]; then
+    echo "${COLORED}Re-allocation failure${CLEAR}"
+elif [  ${ret} != 0 ]; then
+    echo "${COLORED}Program failure: ${ret}${CLEAR}"
+fi
+
+exit ${ret}

@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/main",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            // "miDebuggerPath": "/Users/jim/code/thirdparty/lldb-mi/build/src/lldb-mi",
+            // "targetArchitecture": "arm64",
+            "logging": {
+                "moduleLoad": false
+            }
+        }
+    ]
+}
